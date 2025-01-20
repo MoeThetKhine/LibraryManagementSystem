@@ -48,6 +48,17 @@ namespace LibraryManagementSystem.Domain.Models
 			};
 		}
 
+		public static Result<T> SystemError(string message, T? data = default)
+		{
+			return new Result<T>()
+			{
+				IsSuccess = true,
+				Type = EnumRespType.SystemError,
+				Data = data,
+				Message = message
+			};
+		}
+
 
 	}
 }
