@@ -96,6 +96,8 @@ public partial class AppDbContext : DbContext
 
 		#endregion
 
+		#region TblUser
+
 		modelBuilder.Entity<TblUser>(entity =>
 		{
 			entity.HasKey(e => e.UserId).HasName("PK__Tbl_User__1788CC4CB1537EFB");
@@ -118,6 +120,9 @@ public partial class AppDbContext : DbContext
 
 		OnModelCreatingPartial(modelBuilder);
 	}
+
+	#endregion
+
 
 	partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
