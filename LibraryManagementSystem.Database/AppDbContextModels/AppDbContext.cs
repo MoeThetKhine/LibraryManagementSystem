@@ -59,6 +59,8 @@ public partial class AppDbContext : DbContext
 
 		#endregion
 
+		#region TblCategory
+
 		modelBuilder.Entity<TblCategory>(entity =>
 		{
 			entity.HasKey(e => e.CategoryId).HasName("PK__Tbl_Cate__19093A0B1C0155F3");
@@ -70,6 +72,8 @@ public partial class AppDbContext : DbContext
 			entity.Property(e => e.CategoryId).HasMaxLength(50);
 			entity.Property(e => e.CategoryName).HasMaxLength(255);
 		});
+
+		#endregion
 
 		modelBuilder.Entity<TblTransaction>(entity =>
 		{
