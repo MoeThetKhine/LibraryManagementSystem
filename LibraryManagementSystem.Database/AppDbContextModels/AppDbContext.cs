@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace LibraryManagementSystem.Database.AppDbContextModels;
+﻿namespace LibraryManagementSystem.Database.AppDbContextModels;
 
 public partial class AppDbContext : DbContext
 {
@@ -122,7 +120,6 @@ public partial class AppDbContext : DbContext
 	}
 
 	#endregion
-
 
 	partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
