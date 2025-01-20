@@ -37,6 +37,8 @@ public class UserService
 
 	#endregion
 
+	#region Register User Async
+
 	public async Task<Result<UserRequestModel>> RegisterUserAsync(UserRequestModel userRequest)
 	{
 		Result<UserRequestModel> result;
@@ -76,5 +78,6 @@ public class UserService
 		return result;
 	}
 
+	#endregion
 
 }
