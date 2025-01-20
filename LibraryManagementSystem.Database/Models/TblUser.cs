@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Database.Models;
 
+#region TblUser
+
 public partial class TblUser
 {
     public string UserId { get; set; } = null!;
@@ -18,3 +20,5 @@ public partial class TblUser
 
     public bool IsActive { get; set; }
 }
+
+#endregion
