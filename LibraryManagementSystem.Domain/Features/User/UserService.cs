@@ -89,7 +89,7 @@ public class UserService
 		try
 		{
 			var members = await _appDbContext.TblUsers
-				.Where(u => u.UserRole == "Member" && !u.IsActive)
+				.Where(u => u.UserRole == "Member" && u.IsActive)
 				.ToListAsync();
 
 			if (members is null || !members.Any())
@@ -99,14 +99,10 @@ public class UserService
 
 			var lst = members.Select(x => new UserModel
 			{
-				UserId = x.UserId,
 				UserName = x.UserName,
 				Email = x.Email,
-				Password = x.Password,
-				UserRole = x.UserRole,
 				PhoneNumber = x.PhoneNumber,
 				Address = x.Address,
-				IsActive = x.IsActive
 			}).ToList();
 
 			result = Result<IEnumerable<UserModel>>.Success(lst);
