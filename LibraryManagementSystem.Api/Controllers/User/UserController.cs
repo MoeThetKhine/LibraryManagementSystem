@@ -1,7 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.Features.User;
 using LibraryManagementSystem.Domain.Models.User;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystem.Api.Controllers.User
