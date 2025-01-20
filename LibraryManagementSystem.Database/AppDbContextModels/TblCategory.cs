@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Database.AppDbContextModels;
 
+#region TblCategory
+
 public partial class TblCategory
 {
 	public string CategoryId { get; set; } = null!;
@@ -8,3 +10,5 @@ public partial class TblCategory
 
 	public string? Description { get; set; }
 }
+
+#endregion
