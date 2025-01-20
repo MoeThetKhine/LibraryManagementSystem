@@ -27,5 +27,16 @@ namespace LibraryManagementSystem.Domain.Models
 			};
 		}
 
+		public static Result<T> DeleteSuccess(string message = "Deleting Successful.")
+		{
+			return new Result<T>()
+			{
+				IsSuccess = true,
+				Type = EnumRespType.Success,
+				Message = message
+			};
+		}
+
+
 	}
 }
