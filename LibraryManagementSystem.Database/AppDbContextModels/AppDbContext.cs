@@ -33,6 +33,8 @@ public partial class AppDbContext : DbContext
 
 	#endregion
 
+	#region On Model Creating
+
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.Entity<TblBook>(entity =>
@@ -98,6 +100,8 @@ public partial class AppDbContext : DbContext
 			entity.Property(e => e.UserName).HasMaxLength(255);
 			entity.Property(e => e.UserRole).HasMaxLength(50);
 		});
+
+		#endregion
 
 		OnModelCreatingPartial(modelBuilder);
 	}
