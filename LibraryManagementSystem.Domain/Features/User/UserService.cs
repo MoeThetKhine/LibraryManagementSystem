@@ -80,6 +80,8 @@ public class UserService
 
 	#endregion
 
+	#region Get Member Async
+
 	public async Task<Result<IEnumerable<UserModel>>> GetMemberAsync()
 	{
 		Result<IEnumerable<UserModel>> result;
@@ -117,5 +119,6 @@ public class UserService
 		return result;
 	}
 
+	#endregion
 
 }
