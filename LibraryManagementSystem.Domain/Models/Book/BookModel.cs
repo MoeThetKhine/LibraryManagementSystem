@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Domain.Models.Book;
 
+#region Book Model
+
 public class BookModel
 {
 	public string BookId { get; set; } = null!;
@@ -18,3 +20,5 @@ public class BookModel
 
 	public bool IsActive { get; set; }
 }
+
+#endregion
