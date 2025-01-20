@@ -22,11 +22,15 @@ public class UserController : ControllerBase
 
 	#endregion
 
+	#region Register User
+
 	[HttpPost("register")]
 	public async Task<IActionResult> RegisterUserAsync([FromForm]UserRequestModel userRequest)
 	{
 		var result = await _userService.RegisterUserAsync(userRequest);
 		return Ok(result);
 	}
+
+	#endregion
 
 }
