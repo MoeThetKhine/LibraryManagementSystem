@@ -54,6 +54,8 @@ public class Result<T>
 
 	#endregion
 
+	#region System Error
+
 	public static Result<T> SystemError(string message, T? data = default)
 	{
 		return new Result<T>()
@@ -64,5 +66,7 @@ public class Result<T>
 			Message = message
 		};
 	}
+
+	#endregion
 
 }
