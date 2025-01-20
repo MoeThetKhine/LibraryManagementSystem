@@ -1,9 +1,4 @@
-﻿using LibraryManagementSystem.Database.AppDbContextModels;
-using LibraryManagementSystem.Domain.Models.User;
-using LibraryManagementSystem.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace LibraryManagementSystem.Domain.Features.User;
+﻿namespace LibraryManagementSystem.Domain.Features.User;
 
 public class UserService
 {
