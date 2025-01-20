@@ -37,6 +37,17 @@ namespace LibraryManagementSystem.Domain.Models
 			};
 		}
 
+		public static Result<T> ValidationError(string message, T? data = default)
+		{
+			return new Result<T>()
+			{
+				IsSuccess = true,
+				Type = EnumRespType.ValidationError,
+				Data = data,
+				Message = message
+			};
+		}
+
 
 	}
 }
