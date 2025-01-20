@@ -14,6 +14,8 @@ namespace LibraryManagementSystem.Domain.Features.User
 			_appDbContext = appDbContext;
 		}
 
+		#region Login User Async
+
 		public async Task<Result<LoginUserModel>> LoginUserAsync(LoginUserModel loginUser)
 		{
 			Result<LoginUserModel> result;
@@ -37,6 +39,8 @@ namespace LibraryManagementSystem.Domain.Features.User
 
 			return result;
 		}
+
+		#endregion
 
 	}
 }
