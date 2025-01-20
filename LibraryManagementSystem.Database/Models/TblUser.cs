@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LibraryManagementSystem.Database.Models;
+﻿namespace LibraryManagementSystem.Database.Models;
 
 public partial class TblUser
 {
