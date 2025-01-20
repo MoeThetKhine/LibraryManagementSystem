@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Domain.Models.User;
 
+#region User Request Model
+
 public class UserRequestModel
 {
 	public string UserName { get; set; } = null!;
@@ -11,5 +13,6 @@ public class UserRequestModel
 	public string PhoneNumber { get; set; } = null!;
 
 	public string Address { get; set; } = null!;
-
 }
+
+#endregion
