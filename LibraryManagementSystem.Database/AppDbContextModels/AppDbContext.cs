@@ -37,6 +37,9 @@ public partial class AppDbContext : DbContext
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
+
+		#region TblBook
+
 		modelBuilder.Entity<TblBook>(entity =>
 		{
 			entity.HasKey(e => e.BookId).HasName("PK__Tbl_Book__3DE0C207F94EE4EA");
@@ -53,6 +56,8 @@ public partial class AppDbContext : DbContext
 			entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
 			entity.Property(e => e.Title).HasMaxLength(255);
 		});
+
+		#endregion
 
 		modelBuilder.Entity<TblCategory>(entity =>
 		{
