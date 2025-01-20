@@ -1,8 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Features.User;
-using LibraryManagementSystem.Domain.Models.User;
-using Microsoft.AspNetCore.Mvc;
-
-namespace LibraryManagementSystem.Api.Controllers.User;
+﻿namespace LibraryManagementSystem.Api.Controllers.User;
 
 [Route("api/[controller]")]
 [ApiController]
