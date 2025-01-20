@@ -11,7 +11,6 @@ public class UserModel
 	public string PhoneNumber { get; set; } = null!;
 
 	public string Address { get; set; } = null!;
-
 }
 
 #endregion
