@@ -1,5 +1,4 @@
 using LibraryManagementSystem.Database.AppDbContextModels;
-using LibraryManagementSystem.Domain.Features.User;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
