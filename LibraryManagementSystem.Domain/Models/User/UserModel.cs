@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Domain.Models.User;
 
+#region User Model
+
 public class UserModel
 {
 	public string UserId { get; set; } = null!;
@@ -18,3 +20,5 @@ public class UserModel
 
 	public bool IsActive { get; set; }
 }
+
+#endregion
