@@ -37,4 +37,44 @@ public class UserService
 
 	#endregion
 
+	public async Task<Result<UserRequestModel>> RegisterUserAsync(UserRequestModel userRequest)
+	{
+		Result<UserRequestModel> result;
+
+		try
+		{
+			var existingUser = await _appDbContext.TblUsers
+				.FirstOrDefaultAsync(u => u.Email == userRequest.Email);
+
+			if (existingUser is not null)
+			{
+				return Result<UserRequestModel>.ValidationError("A user with this email already exists.");
+			}
+
+			var user = new TblUser
+			{
+				UserId = Guid.NewGuid().ToString(),
+				UserName = userRequest.UserName,
+				Email = userRequest.Email,
+				Password = userRequest.Password,
+				UserRole = "Member",
+				PhoneNumber = userRequest.PhoneNumber,
+				Address = userRequest.Address,
+				IsActive = true
+			};
+
+			await _appDbContext.TblUsers.AddAsync(user);
+			await _appDbContext.SaveChangesAsync();
+
+			result = Result<UserRequestModel>.Success(userRequest, "User registered successfully.");
+		}
+		catch (Exception ex)
+		{
+			result = Result<UserRequestModel>.SystemError($"An error occurred: {ex.Message}");
+		}
+
+		return result;
+	}
+
+
 }
