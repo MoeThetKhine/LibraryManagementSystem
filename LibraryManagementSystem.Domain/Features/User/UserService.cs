@@ -80,4 +80,42 @@ public class UserService
 
 	#endregion
 
+	public async Task<Result<IEnumerable<UserModel>>> GetMemberAsync()
+	{
+		Result<IEnumerable<UserModel>> result;
+
+		try
+		{
+			var members = await _appDbContext.TblUsers
+				.Where(u => u.UserRole == "Member" && !u.IsActive)
+				.ToListAsync();
+
+			if (members is null || !members.Any())
+			{
+				return Result<IEnumerable<UserModel>>.ValidationError("No members found.");
+			}
+
+			var lst = members.Select(x => new UserModel
+			{
+				UserId = x.UserId,
+				UserName = x.UserName,
+				Email = x.Email,
+				Password = x.Password,
+				UserRole = x.UserRole,
+				PhoneNumber = x.PhoneNumber,
+				Address = x.Address,
+				IsActive = x.IsActive
+			}).ToList();
+
+			result = Result<IEnumerable<UserModel>>.Success(lst);
+		}
+		catch (Exception ex)
+		{
+			result = Result<IEnumerable<UserModel>>.SystemError($"An error occurred: {ex.Message}");
+		}
+
+		return result;
+	}
+
+
 }
