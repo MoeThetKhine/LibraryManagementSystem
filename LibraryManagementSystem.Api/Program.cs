@@ -1,6 +1,3 @@
-using LibraryManagementSystem.Database.AppDbContextModels;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
