@@ -33,4 +33,11 @@ public class UserController : ControllerBase
 
 	#endregion
 
+	[HttpGet("Get-member")]
+	public async Task<IActionResult> GetMemberAsync()
+	{
+		var result = await _userService.GetMemberAsync();
+		return Ok(result);
+	}
+
 }
