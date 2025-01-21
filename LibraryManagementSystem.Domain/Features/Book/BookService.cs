@@ -9,6 +9,8 @@ public class BookService
 		_appDbContext = appDbContext;
 	}
 
+	#region Get Book Async
+
 	public async Task<Result<IEnumerable<BookModel>>> GetBookAsync()
 	{
 		Result<IEnumerable<BookModel>> result;
@@ -43,4 +45,7 @@ public class BookService
 
 		return result;
 	}
+
+	#endregion
+
 }
