@@ -19,6 +19,8 @@ public partial class TblUser
 	public string Address { get; set; } = null!;
 
 	public bool IsActive { get; set; }
+
+	public bool IsLocked { get; set; }
 }
 
 #endregion
