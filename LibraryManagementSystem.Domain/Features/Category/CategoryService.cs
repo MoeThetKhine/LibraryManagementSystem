@@ -14,6 +14,7 @@ public class CategoryService
 	public async Task<Result<CategoryRequestModel>> CreateCategoryAsync(CategoryRequestModel requestModel)
 	{
 		Result<CategoryRequestModel> result;
+
 		try
 		{
 			var category = new TblCategory
