@@ -48,4 +48,41 @@ public class BookService
 
 	#endregion
 
+	public async Task<Result<IEnumerable<BookModel>>> GetBooksByCategoryAsync(string categoryName)
+	{
+		Result<IEnumerable<BookModel>> result;
+
+		try
+		{
+			var books = await _appDbContext.TblBooks
+				.AsNoTracking()
+				.Where(x => x.CategoryName == categoryName && x.IsActive)
+				.ToListAsync();
+
+			if (books is null || !books.Any())
+			{
+				return Result<IEnumerable<BookModel>>.ValidationError("No books found.");
+			}
+
+			var lst = books.Select(book => new BookModel
+			{
+				Title = book.Title,
+				Author = book.Author,
+				Isbn = book.Isbn,
+				CategoryName = book.CategoryName,
+				Qty = book.Qty,
+				Price = book.Price
+			}).ToList();
+
+			result = Result<IEnumerable<BookModel>>.Success(lst);
+		}
+		catch (Exception ex)
+		{
+			result = Result<IEnumerable<BookModel>>.ValidationError($"An error occurred: {ex.Message}");
+		}
+
+		return result;
+	}
+
+
 }
