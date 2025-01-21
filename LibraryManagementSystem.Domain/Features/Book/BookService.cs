@@ -88,6 +88,8 @@ public class BookService
 
 	#endregion
 
+	#region Create Book Async
+
 	public async Task<Result<BookModel>> CreateBookAsync(BookModel bookModel)
 	{
 		Result<BookModel> result;
@@ -131,5 +133,7 @@ public class BookService
 
 		return result;
 	}
+
+	#endregion
 
 }
