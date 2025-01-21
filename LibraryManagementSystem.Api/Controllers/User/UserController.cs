@@ -44,11 +44,15 @@ public class UserController : ControllerBase
 
 	#endregion
 
+	#region User Logout
+
 	[HttpPost("logout")]
 	public async Task<IActionResult> UserLogoutAsync([FromForm]LogoutModel logoutModel)
 	{
 		var result = await _userService.UserLogoutAsync(logoutModel);
 		return Ok(result);
 	}
+
+	#endregion
 
 }
