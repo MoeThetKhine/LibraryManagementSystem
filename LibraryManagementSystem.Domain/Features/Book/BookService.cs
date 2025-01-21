@@ -136,7 +136,7 @@ public class BookService
 
 	#endregion
 
-	public async Task<Result<BookReponseModel>> UpdateBookAsync(string isbn ,BookReponseModel reponseModel)
+	public async Task<Result<BookReponseModel>> UpdateBookAsync(string isbn ,BookReponseModel responseModel)
 	{
 		Result<BookReponseModel> result;
 
@@ -150,12 +150,12 @@ public class BookService
 				result = Result<BookReponseModel>.ValidationError("Book not found.");
 			}
 
-			book.Qty = reponseModel.Qty;
-			book.Price = reponseModel.Price;
+			book.Qty = responseModel.Qty;
+			book.Price = responseModel.Price;
 
 			await _appDbContext.SaveChangesAsync();
 
-			result = Result<BookReponseModel>.Success(reponseModel, "Book updated successfully.");
+			result = Result<BookReponseModel>.Success(responseModel, "Book updated successfully.");
 		}
 		catch (Exception ex)
 		{
