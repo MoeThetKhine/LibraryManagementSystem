@@ -4,8 +4,6 @@
 
 public class TransactionModel
 {
-	public string TransactionId { get; set; } = null!;
-
 	public string UserName { get; set; } = null!;
 
 	public string BookId { get; set; } = null!;
