@@ -120,6 +120,8 @@ public class UserService
 
 	#endregion
 
+	#region User Logout Async
+
 	public async Task<Result<LogoutModel>> UserLogoutAsync(LogoutModel logoutModel)
 	{
 		Result<LogoutModel> result;
@@ -146,5 +148,7 @@ public class UserService
 
 		return result;
 	}
+
+	#endregion
 
 }
