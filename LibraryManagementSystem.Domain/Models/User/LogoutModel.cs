@@ -1,7 +1,6 @@
-﻿namespace LibraryManagementSystem.Domain.Models.User
+﻿namespace LibraryManagementSystem.Domain.Models.User;
+
+public class LogoutModel
 {
-	public class LogoutModel
-	{
-		public string Email { get; set; } = null!;
-	}
+	public string Email { get; set; } = null!;
 }
