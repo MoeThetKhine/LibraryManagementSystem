@@ -41,6 +41,33 @@ public class CategoryService
 	#endregion
 
 
+	public async Task<Result<IEnumerable<CategoryRequestModel>>> GetCategoryAsync()
+	{
+		try
+		{
+			var categories = await appDbContext.TblCategories
+				.AsNoTracking()
+				.ToListAsync();
+
+			if (!categories.Any())
+			{
+				return Result<IEnumerable<CategoryRequestModel>>.ValidationError("No Category Found.");
+			}
+
+			var categoryModels = categories.Select(category => new CategoryRequestModel
+			{
+				CategoryName = category.CategoryName,
+				Description = category.Description
+			}).ToList();
+
+			return Result<IEnumerable<CategoryRequestModel>>.Success(categoryModels, "Categories found.");
+		}
+		catch (Exception ex)
+		{
+			return Result<IEnumerable<CategoryRequestModel>>.SystemError($"An unexpected error occurred: {ex.Message}");
+		}
+	}
+
 
 
 
