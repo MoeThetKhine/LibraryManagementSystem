@@ -4,8 +4,6 @@
 
 public class BookModel
 {
-	public string BookId { get; set; } = null!;
-
 	public string Title { get; set; } = null!;
 
 	public string Author { get; set; } = null!;
@@ -17,8 +15,6 @@ public class BookModel
 	public int Qty { get; set; }
 
 	public decimal Price { get; set; }
-
-	public bool IsActive { get; set; }
 }
 
 #endregion
