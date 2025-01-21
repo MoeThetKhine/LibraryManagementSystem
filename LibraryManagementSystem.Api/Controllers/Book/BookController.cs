@@ -11,10 +11,15 @@ public class BookController : ControllerBase
 		_bookService = bookService;
 	}
 
+	#region Get Book Async
+
 	[HttpGet]
 	public async Task<IActionResult> GetBookAsync()
 	{
 		var result = await _bookService.GetBookAsync();
 		return Ok(result);
 	}
+
+	#endregion
+
 }
