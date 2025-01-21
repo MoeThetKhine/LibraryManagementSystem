@@ -16,7 +16,7 @@ namespace LibraryManagementSystem.Domain.Features.Category
 			this.appDbContext = appDbContext;
 		}
 
-		public async Task<Result<CategoryRequestModel>> CreateCategory(CategoryRequestModel requestModel)
+		public async Task<Result<CategoryRequestModel>> CreateCategoryAsync(CategoryRequestModel requestModel)
 		{
 			Result<CategoryRequestModel> result;
 			try
