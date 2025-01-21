@@ -44,11 +44,15 @@ public class BookController : ControllerBase
 
 	#endregion
 
+	#region Update Book Async
+
 	[HttpPut("{isbn}")]
-	public async Task<IActionResult> UpdateBookAsync([FromForm] string isbn, BookReponseModel responseModel)
+	public async Task<IActionResult> UpdateBookAsync(string isbn, BookReponseModel responseModel)
 	{
 		var result = await _bookService.UpdateBookAsync(isbn, responseModel);
 		return Ok(result);
 	}
+
+	#endregion
 
 }
