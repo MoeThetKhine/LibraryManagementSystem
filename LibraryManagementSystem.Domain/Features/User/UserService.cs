@@ -18,7 +18,7 @@ public class UserService
 		try
 		{
 			var user = await _appDbContext.TblUsers
-				.FirstOrDefaultAsync(u => u.Email == loginUser.Email && u.Password == loginUser.Password && u.IsActive && !u.IsLocked);
+				.FirstOrDefaultAsync(u => u.Email == loginUser.Email && u.Password == loginUser.Password && u.IsActive && u.IsLocked);
 
 			if(user is null)
 			{
@@ -119,5 +119,32 @@ public class UserService
 	}
 
 	#endregion
+
+	public async Task<Result<LogoutModel>> UserLogoutAsync(LogoutModel logoutModel)
+	{
+		Result<LogoutModel> result;
+
+		try
+		{
+			var user = await _appDbContext.TblUsers
+				.FirstOrDefaultAsync(u => u.Email == logoutModel.Email && !u.IsLocked && u.IsActive);
+
+			if (user is null)
+			{
+				return Result<LogoutModel>.ValidationError("User not found.");
+			}
+
+			user.IsLocked = true;
+			await _appDbContext.SaveChangesAsync();
+
+			result = Result<LogoutModel>.Success(logoutModel, "User logged out successfully.");
+		}
+		catch (Exception ex)
+		{
+			result = Result<LogoutModel>.SystemError($"An error occurred: {ex.Message}");
+		}
+
+		return result;
+	}
 
 }
