@@ -13,11 +13,15 @@ namespace LibraryManagementSystem.Api.Controllers.Transaction
 			_transactionService = transactionService;
 		}
 
+		#region Get Transaction Async
+
 		[HttpGet]
 		public async Task<IActionResult> GetTransactionAsync()
 		{
 			var result = await _transactionService.GetTransactionAsync();
 			return Ok(result);
 		}
+
+		#endregion
 	}
 }
