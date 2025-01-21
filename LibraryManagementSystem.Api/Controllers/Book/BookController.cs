@@ -1,4 +1,6 @@
-﻿namespace LibraryManagementSystem.Api.Controllers.Book;
+﻿using LibraryManagementSystem.Domain.Models.Book;
+
+namespace LibraryManagementSystem.Api.Controllers.Book;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -32,4 +34,11 @@ public class BookController : ControllerBase
 	}
 
 	#endregion
+
+	[HttpPost]
+	public async Task<IActionResult> CreateBookAsync([FromForm]BookModel bookModel)
+	{
+		var result = await _bookService.CreateBookAsync(bookModel);
+		return Ok(result);
+	}
 }
