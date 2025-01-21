@@ -1,6 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Book;
-
-namespace LibraryManagementSystem.Domain.Features.Book;
+﻿namespace LibraryManagementSystem.Domain.Features.Book;
 
 public class BookService
 {
