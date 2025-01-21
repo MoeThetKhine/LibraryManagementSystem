@@ -136,7 +136,7 @@ public class BookService
 
 	#endregion
 
-	public async Task<Result<BookReponseModel>> UpdateBookAsync(string isbn ,BookReponseModel responseModel)
+	public async Task<Result<BookReponseModel>> UpdateBookAsync(string isbn, BookReponseModel responseModel)
 	{
 		Result<BookReponseModel> result;
 
@@ -147,7 +147,7 @@ public class BookService
 
 			if (book is null)
 			{
-				result = Result<BookReponseModel>.ValidationError("Book not found.");
+				return Result<BookReponseModel>.ValidationError("Book not found.");
 			}
 
 			book.Qty = responseModel.Qty;
@@ -164,5 +164,6 @@ public class BookService
 
 		return result;
 	}
+
 
 }
