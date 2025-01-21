@@ -1,7 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Features.Category;
-using LibraryManagementSystem.Domain.Models.Category;
-
-namespace LibraryManagementSystem.Api.Controllers.Category
+﻿namespace LibraryManagementSystem.Api.Controllers.Category
 {
 	[Route("api/[controller]")]
 	[ApiController]
