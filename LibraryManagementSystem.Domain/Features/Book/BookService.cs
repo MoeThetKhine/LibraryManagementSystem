@@ -48,6 +48,8 @@ public class BookService
 
 	#endregion
 
+	#region Get Books By Category Async
+
 	public async Task<Result<IEnumerable<BookModel>>> GetBooksByCategoryAsync(string categoryName)
 	{
 		Result<IEnumerable<BookModel>> result;
@@ -84,5 +86,6 @@ public class BookService
 		return result;
 	}
 
+	#endregion
 
 }
