@@ -10,6 +10,8 @@ public class TransactionService
 		_appDbContext = appDbContext;
 	}
 
+
+	#region Get Transaction Async
 	public async Task<Result<IEnumerable<TransactionModel>>> GetTransactionAsync()
 	{
 		Result<IEnumerable<TransactionModel>> result;
@@ -46,4 +48,6 @@ public class TransactionService
 
 		return result;
 	}
+
+	#endregion
 }
