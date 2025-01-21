@@ -1,6 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Category;
-
-namespace LibraryManagementSystem.Domain.Features.Category
+﻿namespace LibraryManagementSystem.Domain.Features.Category
 {
 	public class CategoryService
 	{
