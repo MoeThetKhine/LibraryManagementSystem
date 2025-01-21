@@ -17,7 +17,26 @@ namespace LibraryManagementSystem.Domain.Features.Book
 
 			try
 			{
+				var books = await _appDbContext.TblBooks
+					.AsNoTracking()
+					.ToListAsync();
 
+				if (!books.Any())
+				{
+					result = Result<IEnumerable<BookModel>>.ValidationError("No Book Found.");
+				}
+
+				var lst =  books.Select(book => new BookModel
+				{
+					Title = book.Title,
+					Author = book.Author,
+					Isbn = book.Isbn,
+					CategoryName = book.CategoryName,
+					Qty = book.Qty,
+					Price = book.Price
+				}).ToList();
+
+				result = Result<IEnumerable<BookModel>>.Success(lst);
 			}
 			catch (Exception ex)
 			{
