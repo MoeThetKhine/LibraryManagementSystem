@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace LibraryManagementSystem.Api.Controllers.Book
+﻿namespace LibraryManagementSystem.Api.Controllers.Book
 {
 	[Route("api/[controller]")]
 	[ApiController]
