@@ -9,7 +9,6 @@ public class TransactionService
 		_appDbContext = appDbContext;
 	}
 
-
 	#region Get Transaction Async
 	public async Task<Result<IEnumerable<TransactionModel>>> GetTransactionAsync()
 	{
