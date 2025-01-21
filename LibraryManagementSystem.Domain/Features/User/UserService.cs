@@ -151,6 +151,8 @@ public class UserService
 
 	#endregion
 
+	#region Update User Profile Async
+
 	public async Task<Result<UpdateUserProfile>> UpdateUserProfileAsync(string email , UpdateUserProfile updateUserProfile)
 	{
 		Result<UpdateUserProfile> result;
@@ -201,5 +203,7 @@ public class UserService
 
 		return result;
 	}
+
+	#endregion
 
 }
