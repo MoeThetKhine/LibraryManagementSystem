@@ -55,6 +55,8 @@ public class UserController : ControllerBase
 
 	#endregion
 
+	#region Update User Async
+
 	[HttpPatch("update/{email}")]
 	public async Task<IActionResult> UpdateUserAsync([FromRoute] string email,UpdateUserProfile updateUserProfile)
 	{
@@ -63,5 +65,6 @@ public class UserController : ControllerBase
 		return Ok(result);
 	}
 
+	#endregion
 
 }
