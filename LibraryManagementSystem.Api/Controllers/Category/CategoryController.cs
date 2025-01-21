@@ -14,11 +14,16 @@ namespace LibraryManagementSystem.Api.Controllers.Category
 			_categoryService = categoryService;
 		}
 
+		#region Create Category Async
+
 		[HttpPost]
 		public async Task<IActionResult> CreateCategoryAsync(CategoryRequestModel requestModel)
 		{
 			var result = await _categoryService.CreateCategoryAsync(requestModel);
 			return Ok(result);
 		}
+
+		#endregion
+
 	}
 }
