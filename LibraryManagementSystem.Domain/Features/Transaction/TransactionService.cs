@@ -1,5 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Transaction;
-namespace LibraryManagementSystem.Domain.Features.Transaction;
+﻿namespace LibraryManagementSystem.Domain.Features.Transaction;
 
 public class TransactionService
 {
