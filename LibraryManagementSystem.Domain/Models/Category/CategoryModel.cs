@@ -1,11 +1,10 @@
-﻿namespace LibraryManagementSystem.Domain.Models.Category
+﻿namespace LibraryManagementSystem.Domain.Models.Category;
+
+public class CategoryModel
 {
-	public class CategoryModel
-	{
-		public string CategoryId { get; set; } = null!;
+	public string CategoryId { get; set; } = null!;
 
-		public string CategoryName { get; set; } = null!;
+	public string CategoryName { get; set; } = null!;
 
-		public string? Description { get; set; }
-	}
+	public string? Description { get; set; }
 }
