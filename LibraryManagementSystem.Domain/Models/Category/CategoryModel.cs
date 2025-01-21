@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Domain.Models.Category;
 
+#region Category Model
+
 public class CategoryModel
 {
 	public string CategoryId { get; set; } = null!;
@@ -8,3 +10,5 @@ public class CategoryModel
 
 	public string? Description { get; set; }
 }
+
+#endregion
