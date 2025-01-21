@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Domain.Models.User;
 
+#region Update User Profile
+
 public class UpdateUserProfile
 {
 	public string UserName { get; set; } = null!;
@@ -15,3 +17,5 @@ public class UpdateUserProfile
 	public string Address { get; set; } = null!;
 
 }
+
+#endregion
