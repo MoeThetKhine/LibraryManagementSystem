@@ -165,7 +165,9 @@ public class UserService
 				return Result<UpdateUserProfile>.ValidationError("User not found.");
 			}
 
-			if(!string.IsNullOrEmpty(updateUserProfile.UserName))
+			#region Validation
+
+			if (!string.IsNullOrEmpty(updateUserProfile.UserName))
 			{
 				user.UserName = updateUserProfile.UserName;
 			}
@@ -184,6 +186,8 @@ public class UserService
 			{
 				user.Address = updateUserProfile.Address;
 			}
+
+			#endregion
 
 			_appDbContext.Entry(user).State = EntityState.Modified;
 			await _appDbContext.SaveChangesAsync();
