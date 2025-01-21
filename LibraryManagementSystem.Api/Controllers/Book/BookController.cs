@@ -22,10 +22,14 @@ public class BookController : ControllerBase
 
 	#endregion
 
+	#region Get Books By Category Async
+
 	[HttpGet("CategoryName")]
 	public async Task<IActionResult> GetBooksByCategoryAsync(string categoryName)
 	{
 		var result = await _bookService.GetBooksByCategoryAsync(categoryName);
 		return Ok(result);
 	}
+
+	#endregion
 }
