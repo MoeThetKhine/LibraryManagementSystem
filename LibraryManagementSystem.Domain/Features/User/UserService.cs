@@ -129,7 +129,7 @@ public class UserService
 		try
 		{
 			var user = await _appDbContext.TblUsers
-				.FirstOrDefaultAsync(u => u.Email == logoutModel.Email && !u.IsLocked && u.IsActive);
+				.FirstOrDefaultAsync(u => u.Email == logoutModel.Email  && !u.IsLocked && u.IsActive);
 
 			if (user is null)
 			{
@@ -150,5 +150,52 @@ public class UserService
 	}
 
 	#endregion
+
+	public async Task<Result<UpdateUserProfile>> UpdateUserProfileAsync(string email , UpdateUserProfile updateUserProfile)
+	{
+		Result<UpdateUserProfile> result;
+
+		try
+		{
+			var user = await _appDbContext.TblUsers
+				.FirstOrDefaultAsync(u => u.Email == email && u.UserRole == "Member" && u.IsActive && !u.IsLocked);
+
+			if (user is null)
+			{
+				return Result<UpdateUserProfile>.ValidationError("User not found.");
+			}
+
+			if(!string.IsNullOrEmpty(updateUserProfile.UserName))
+			{
+				user.UserName = updateUserProfile.UserName;
+			}
+
+			if(!string.IsNullOrEmpty(updateUserProfile.Password))
+			{
+				user.Password = updateUserProfile.Password;
+			}	
+
+			if(!string.IsNullOrEmpty(updateUserProfile.PhoneNumber))
+			{
+				user.PhoneNumber = updateUserProfile.PhoneNumber;
+			}
+
+			if (!string.IsNullOrEmpty(updateUserProfile.Address))
+			{
+				user.Address = updateUserProfile.Address;
+			}
+
+			_appDbContext.Entry(user).State = EntityState.Modified;
+			await _appDbContext.SaveChangesAsync();
+
+			result = Result<UpdateUserProfile>.Success(updateUserProfile, "User profile updated successfully.");
+		}
+		catch (Exception ex)
+		{
+			result = Result<UpdateUserProfile>.SystemError($"An error occurred: {ex.Message}");
+		}
+
+		return result;
+	}
 
 }
