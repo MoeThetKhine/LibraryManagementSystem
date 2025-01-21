@@ -44,6 +44,8 @@ public class CategoryService
 
 	public async Task<Result<IEnumerable<CategoryRequestModel>>> GetCategoryAsync()
 	{
+		Result<IEnumerable<CategoryRequestModel>> result;
+
 		try
 		{
 			var categories = await appDbContext.TblCategories
@@ -52,7 +54,7 @@ public class CategoryService
 
 			if (!categories.Any())
 			{
-				return Result<IEnumerable<CategoryRequestModel>>.ValidationError("No Category Found.");
+				result = Result<IEnumerable<CategoryRequestModel>>.ValidationError("No Category Found.");
 			}
 
 			var categoryModels = categories.Select(category => new CategoryRequestModel
@@ -61,12 +63,14 @@ public class CategoryService
 				Description = category.Description
 			}).ToList();
 
-			return Result<IEnumerable<CategoryRequestModel>>.Success(categoryModels, "Categories found.");
+			result = Result<IEnumerable<CategoryRequestModel>>.Success(categoryModels, "Categories found.");
 		}
 		catch (Exception ex)
 		{
-			return Result<IEnumerable<CategoryRequestModel>>.SystemError($"An unexpected error occurred: {ex.Message}");
+			result =  Result<IEnumerable<CategoryRequestModel>>.SystemError($"An unexpected error occurred: {ex.Message}");
 		}
+
+		return result;
 	}
 
 	#endregion
