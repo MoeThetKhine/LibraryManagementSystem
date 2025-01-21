@@ -40,6 +40,7 @@ public class CategoryService
 
 	#endregion
 
+	#region Get Category Async
 
 	public async Task<Result<IEnumerable<CategoryRequestModel>>> GetCategoryAsync()
 	{
@@ -68,7 +69,6 @@ public class CategoryService
 		}
 	}
 
-
-
+	#endregion
 
 }
