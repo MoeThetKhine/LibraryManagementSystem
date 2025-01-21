@@ -1,3 +1,5 @@
+using LibraryManagementSystem.Domain.Features.Book;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -12,6 +14,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 }, ServiceLifetime.Transient, ServiceLifetime.Transient);
 
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<CategoryService>();	
+builder.Services.AddScoped<BookService>();
 
 #endregion
 
