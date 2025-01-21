@@ -18,12 +18,15 @@ public class UserService
 		try
 		{
 			var user = await _appDbContext.TblUsers
-				.FirstOrDefaultAsync(u => u.Email == loginUser.Email && u.Password == loginUser.Password && !u.IsActive);
+				.FirstOrDefaultAsync(u => u.Email == loginUser.Email && u.Password == loginUser.Password && u.IsActive && !u.IsLocked);
 
 			if(user is null)
 			{
 				result = Result<LoginUserModel>.ValidationError("Invalid email or password.");
 			}
+
+			user.IsLocked = false;
+			await _appDbContext.SaveChangesAsync();
 
 			result = Result<LoginUserModel>.Success(loginUser, "Login Successful.");
 		}
