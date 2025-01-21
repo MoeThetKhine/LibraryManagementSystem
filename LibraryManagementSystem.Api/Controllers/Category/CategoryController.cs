@@ -22,11 +22,15 @@ public class CategoryController : ControllerBase
 
 	#endregion
 
+	#region Get Category Async
+
 	[HttpGet]
 	public async Task<IActionResult> GetCategoryAsync()
 	{
 		var result = await _categoryService.GetCategoryAsync();
 		return Ok(result);
 	}
+
+	#endregion
 
 }
