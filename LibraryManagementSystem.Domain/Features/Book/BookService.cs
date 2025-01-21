@@ -169,4 +169,31 @@ public class BookService
 
 	#endregion
 
+	//public async Task<Result<BookModel>> ChangeBookStatus(string isbn)
+	//{
+	//	Result<BookModel> result;
+
+	//	try
+	//	{
+	//		var book = await _appDbContext.TblBooks
+	//			.FirstOrDefaultAsync(x => x.Isbn == isbn && x.IsActive);
+
+	//		if (book is null)
+	//		{
+	//			return Result<BookModel>.ValidationError("Book not found.");
+	//		}
+
+	//		book.IsActive = false;
+
+	//		await _appDbContext.SaveChangesAsync();
+
+	//		result = Result<BookModel>.Success(isbn,"Book status changed successfully.");
+	//	}
+	//	catch (Exception ex)
+	//	{
+	//		result = Result<BookModel>.ValidationError($"An error occurred: {ex.Message}");
+	//	}
+
+	//	return result;
+	//}
 }
