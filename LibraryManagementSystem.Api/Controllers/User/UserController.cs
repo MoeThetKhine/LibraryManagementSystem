@@ -14,7 +14,7 @@ public class UserController : ControllerBase
 	#region Login User
 
 	[HttpPost("login")]
-	public async Task<IActionResult> LoginUserAsync([FromForm]LoginUserModel loginUser)
+	public async Task<IActionResult> LoginUserAsync([FromForm] LoginUserModel loginUser)
 	{
 		var result = await _userService.LoginUserAsync(loginUser);
 		return Ok(result);
@@ -25,7 +25,7 @@ public class UserController : ControllerBase
 	#region Register User
 
 	[HttpPost("register")]
-	public async Task<IActionResult> RegisterUserAsync([FromForm]UserRequestModel userRequest)
+	public async Task<IActionResult> RegisterUserAsync([FromForm] UserRequestModel userRequest)
 	{
 		var result = await _userService.RegisterUserAsync(userRequest);
 		return Ok(result);
@@ -47,13 +47,21 @@ public class UserController : ControllerBase
 	#region User Logout
 
 	[HttpPost("logout")]
-	public async Task<IActionResult> UserLogoutAsync([FromForm]LogoutModel logoutModel)
+	public async Task<IActionResult> UserLogoutAsync([FromForm] LogoutModel logoutModel)
 	{
 		var result = await _userService.UserLogoutAsync(logoutModel);
 		return Ok(result);
 	}
 
 	#endregion
+
+	[HttpPatch("update/{email}")]
+	public async Task<IActionResult> UpdateUserAsync([FromRoute] string email,UpdateUserProfile updateUserProfile)
+	{
+		
+		var result = await _userService.UpdateUserProfileAsync(email, updateUserProfile);
+		return Ok(result);
+	}
 
 
 }
