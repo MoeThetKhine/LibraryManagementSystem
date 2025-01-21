@@ -11,6 +11,8 @@ namespace LibraryManagementSystem.Domain.Features.Category
 			this.appDbContext = appDbContext;
 		}
 
+		#region Create Category Async
+
 		public async Task<Result<CategoryRequestModel>> CreateCategoryAsync(CategoryRequestModel requestModel)
 		{
 			Result<CategoryRequestModel> result;
@@ -37,5 +39,7 @@ namespace LibraryManagementSystem.Domain.Features.Category
 			return result;
 			
 		}
+
+		#endregion
 	}
 }
