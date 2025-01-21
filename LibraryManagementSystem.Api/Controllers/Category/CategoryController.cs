@@ -1,7 +1,5 @@
 ﻿using LibraryManagementSystem.Domain.Features.Category;
 using LibraryManagementSystem.Domain.Models.Category;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystem.Api.Controllers.Category
 {
