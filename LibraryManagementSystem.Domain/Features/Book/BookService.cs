@@ -88,4 +88,48 @@ public class BookService
 
 	#endregion
 
+	public async Task<Result<BookModel>> CreateBookAsync(BookModel bookModel)
+	{
+		Result<BookModel> result;
+
+		try
+		{
+			var bookExist = await _appDbContext.TblBooks
+				.AsNoTracking()
+				.AnyAsync(x => x.Isbn == bookModel.Isbn || x.CategoryName == bookModel.CategoryName);
+
+			if (bookExist)
+			{
+				result = Result<BookModel>.ValidationError("Book already exist.");
+			}
+
+			if(bookModel is null)
+			{
+				result = Result<BookModel>.ValidationError("Please Fill Completely");
+			}
+
+			var book = new TblBook
+			{
+				BookId = Guid.NewGuid().ToString(),
+				Title = bookModel.Title,
+				Author = bookModel.Author,
+				Isbn = bookModel.Isbn,
+				CategoryName = bookModel.CategoryName,
+				Qty = bookModel.Qty,
+				Price = bookModel.Price
+			};
+
+			await _appDbContext.TblBooks.AddAsync(book);
+			await _appDbContext.SaveChangesAsync();
+
+			result = Result<BookModel>.Success(bookModel, "Creating Successful.");
+		}
+		catch (Exception ex)
+		{
+			result = Result<BookModel>.ValidationError(ex.Message);
+		}
+
+		return result;
+	}
+
 }
