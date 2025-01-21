@@ -35,10 +35,15 @@ public class BookController : ControllerBase
 
 	#endregion
 
+	#region Create Book Async
+
 	[HttpPost]
 	public async Task<IActionResult> CreateBookAsync([FromForm]BookModel bookModel)
 	{
 		var result = await _bookService.CreateBookAsync(bookModel);
 		return Ok(result);
 	}
+
+	#endregion
+
 }
