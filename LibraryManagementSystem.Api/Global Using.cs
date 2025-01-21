@@ -6,3 +6,4 @@ global using Microsoft.EntityFrameworkCore;
 global using LibraryManagementSystem.Domain.Features.Category;
 global using LibraryManagementSystem.Domain.Models.Category;
 global using LibraryManagementSystem.Domain.Features.Book;
+global using LibraryManagementSystem.Domain.Models.Book;

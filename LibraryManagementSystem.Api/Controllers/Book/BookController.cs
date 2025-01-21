@@ -1,6 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Book;
-
-namespace LibraryManagementSystem.Api.Controllers.Book;
+﻿namespace LibraryManagementSystem.Api.Controllers.Book;
 
 [Route("api/[controller]")]
 [ApiController]
