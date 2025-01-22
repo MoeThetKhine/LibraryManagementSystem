@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Domain.Models.Transaction;
 
+#region Transaction Request Model
+
 public class TransactionRequestModel
 {
 	//public string TransactionId { get; set; } = null!;
@@ -20,3 +22,5 @@ public class TransactionRequestModel
 
 	public decimal TotalAmount { get; set; }
 }
+
+#endregion
