@@ -61,6 +61,9 @@ public class BookService
 
 		try
 		{
+
+			#region Validation
+
 			var books = await _appDbContext.TblBooks
 				.AsNoTracking()
 				.Where(x => x.CategoryName == categoryName && x.IsActive)
@@ -70,6 +73,8 @@ public class BookService
 			{
 				return Result<IEnumerable<BookModel>>.ValidationError("No books found.");
 			}
+
+			#endregion
 
 			var lst = books.Select(book => new BookModel
 			{
