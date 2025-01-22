@@ -98,6 +98,8 @@ public class BorrowService
 
 		try
 		{
+			#region Validation
+
 			DateTime borrowDate = borrowModel.BorrowDate;
 			DateTime dueDate = borrowModel.DueDate;
 
@@ -129,6 +131,7 @@ public class BorrowService
 
 			book.Qty -= borrowModel.Qty;
 
+			#endregion
 
 			var borrow = new TblBorrow
 			{
