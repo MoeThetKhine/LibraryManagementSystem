@@ -113,6 +113,14 @@ public class BorrowService
 				result = Result<BorrowModel>.ValidationError("Due Date should be greater than Borrow Date.");
 			}
 
+			if (book.Qty < borrowModel.Qty)
+			{
+				return Result<BorrowModel>.ValidationError("Insufficient stock available.");
+			}
+
+			book.Qty -= borrowModel.Qty;
+
+
 			var borrow = new TblBorrow
 			{
 				BookId = Guid.NewGuid().ToString(),
@@ -122,6 +130,8 @@ public class BorrowService
 				DueDate = borrowModel.DueDate,
 				Qty = borrowModel.Qty
 			};
+
+			_appDbContext.TblBooks.Update(book);
 
 			await _appDbContext.TblBorrows.AddAsync(borrow);
 			await _appDbContext.SaveChangesAsync();
