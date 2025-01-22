@@ -10,6 +10,7 @@ public class TransactionService
 	}
 
 	#region Get Transaction Async
+
 	public async Task<Result<IEnumerable<TransactionModel>>> GetTransactionAsync()
 	{
 		Result<IEnumerable<TransactionModel>> result;
@@ -49,6 +50,8 @@ public class TransactionService
 
 	#endregion
 
+	#region Get Transaction By Date Async
+
 	public async Task<Result<TransactionModel>> GetTransactionByDateAsync(DateTime borrowDate)
 	{
 		Result<TransactionModel> result;
@@ -85,4 +88,7 @@ public class TransactionService
 
 		return result;
 	}
+
+	#endregion
+
 }
