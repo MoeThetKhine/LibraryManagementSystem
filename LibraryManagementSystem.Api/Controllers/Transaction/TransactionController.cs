@@ -22,10 +22,11 @@ public class TransactionController : ControllerBase
 
 	#endregion
 
+
 	[HttpGet("{borrowDate}")]
-	public async Task<IActionResult> GetTransactionByIdAsync(DateTime borrowDate)
+	public async Task<IActionResult> GetTransactionByDateAsync(DateTime borrowDate)
 	{
-		var result = await _transactionService.GetTransactionByIdAsync(borrowDate);
+		var result = await _transactionService.GetTransactionByDateAsync(borrowDate);
 		return Ok(result);
 	}
 
