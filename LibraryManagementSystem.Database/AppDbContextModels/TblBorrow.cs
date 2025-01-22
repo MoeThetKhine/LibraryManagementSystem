@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Database.AppDbContextModels;
 
+#region TblBorrow
+
 public partial class TblBorrow
 {
     public string BorrowId { get; set; } = null!;
@@ -14,3 +16,5 @@ public partial class TblBorrow
 
     public int Qty { get; set; }
 }
+
+#endregion
