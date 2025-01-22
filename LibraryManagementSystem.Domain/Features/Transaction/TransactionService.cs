@@ -95,6 +95,8 @@ public class TransactionService
 
 	#endregion
 
+	#region Add Transaction Async
+
 	public async Task<Result<TransactionRequestModel>> AddTransactionAsync(TransactionRequestModel model)
 	{
 		Result<TransactionRequestModel> result;
@@ -168,4 +170,6 @@ public class TransactionService
 
 		return result;
 	}
+	#endregion
+
 }
