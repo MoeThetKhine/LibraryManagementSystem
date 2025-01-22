@@ -1,6 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Borrow;
-
-namespace LibraryManagementSystem.Domain.Features.Borrow;
+﻿namespace LibraryManagementSystem.Domain.Features.Borrow;
 
 public class BorrowService
 {
