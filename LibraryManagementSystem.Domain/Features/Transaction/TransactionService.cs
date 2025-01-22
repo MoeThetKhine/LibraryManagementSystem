@@ -49,7 +49,7 @@ public class TransactionService
 
 	#endregion
 
-	public async Task<Result<TransactionModel>> GetTransactionByIdAsync(DateTime borrowDate)
+	public async Task<Result<TransactionModel>> GetTransactionByDateAsync(DateTime borrowDate)
 	{
 		Result<TransactionModel> result;
 
