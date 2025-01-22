@@ -108,6 +108,8 @@ public class ReturnService
 
 		try
 		{
+			#region Validation
+
 			var borrow = await _appDbContext.TblBorrows
 				.AsNoTracking()
 				.FirstOrDefaultAsync(x => x.BorrowId == returnModel.BorrowId);
@@ -131,6 +133,8 @@ public class ReturnService
 			decimal totalAmount = fine + (book.Price * borrow.Qty);
 
 			book.Qty += borrow.Qty;
+
+			#endregion
 
 			var returnEntity = new TblReturn
 			{
