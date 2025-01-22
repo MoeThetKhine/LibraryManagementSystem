@@ -1,6 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Return;
-
-namespace LibraryManagementSystem.Api.Controllers.Return;
+﻿namespace LibraryManagementSystem.Api.Controllers.Return;
 
 [Route("api/[controller]")]
 [ApiController]
