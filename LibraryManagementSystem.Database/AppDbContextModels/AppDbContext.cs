@@ -59,6 +59,8 @@ public partial class AppDbContext : DbContext
 
 		#endregion
 
+		#region TblBorrow
+
 		modelBuilder.Entity<TblBorrow>(entity =>
         {
             entity.HasKey(e => e.BorrowId).HasName("PK__TblBorro__4295F83FAB183494");
@@ -72,7 +74,11 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.UserId).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<TblCategory>(entity =>
+		#endregion
+
+		#region TblCategory
+
+		modelBuilder.Entity<TblCategory>(entity =>
         {
             entity.HasKey(e => e.CategoryId).HasName("PK__Tbl_Cate__19093A0B1C0155F3");
 
@@ -84,7 +90,9 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.CategoryName).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<TblReturn>(entity =>
+		#endregion
+
+		modelBuilder.Entity<TblReturn>(entity =>
         {
             entity.HasKey(e => e.ReturnId).HasName("PK__TblRetur__F445E9A8FA95C61E");
 
