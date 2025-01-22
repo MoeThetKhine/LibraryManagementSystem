@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Database.AppDbContextModels;
 
+#region TblTransaction
+
 public partial class TblTransaction
 {
     public string TransactionId { get; set; } = null!;
@@ -22,3 +24,5 @@ public partial class TblTransaction
 
     public int? DaysLate { get; set; }
 }
+
+#endregion
