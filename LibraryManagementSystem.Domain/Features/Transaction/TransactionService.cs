@@ -36,7 +36,7 @@ public class TransactionService
 				Fine = transaction.Fine,
 				Qty = transaction.Qty,
 				TotalAmount = transaction.TotalAmount,
-				DaysLate = transaction.DaysLate
+				//DaysLate = transaction.DaysLate
 			}).ToList();
 
 			result = Result<IEnumerable<TransactionModel>>.Success(lst);
@@ -78,7 +78,7 @@ public class TransactionService
 				Fine = transaction.Fine,
 				Qty = transaction.Qty,
 				TotalAmount = transaction.TotalAmount,
-				DaysLate = transaction.DaysLate
+				//DaysLate = transaction.DaysLate
 			};
 
 			result = Result<TransactionModel>.Success(model);
@@ -126,7 +126,7 @@ public class TransactionService
 				result = Result<TransactionRequestModel>.ValidationError("Due Date should be greater than Borrow Date.");
 			}
 
-			decimal fineRatePerDay = 1.0m;
+			decimal fineRatePerDay = 3000;
 
 			int daysLate = (model.ReturnDate > model.DueDate) ? (model.ReturnDate - model.DueDate).Days : 0;
 
