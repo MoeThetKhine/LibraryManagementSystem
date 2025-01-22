@@ -1,4 +1,6 @@
-﻿namespace LibraryManagementSystem.Api.Controllers.Return;
+﻿using LibraryManagementSystem.Domain.Models.Return;
+
+namespace LibraryManagementSystem.Api.Controllers.Return;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -32,5 +34,12 @@ public class ReturnController : ControllerBase
 	}
 
 	#endregion
+
+	[HttpPost]
+	public async Task<IActionResult> CreateReturnAsync(ReturnModel returnModel)
+	{
+		var result = await _returnService.CreateReturnAsync(returnModel);
+		return Ok(result);
+	}
 
 }
