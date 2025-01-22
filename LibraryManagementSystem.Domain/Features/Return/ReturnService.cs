@@ -1,6 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Return;
-
-namespace LibraryManagementSystem.Domain.Features.Return;
+﻿namespace LibraryManagementSystem.Domain.Features.Return;
 
 public class ReturnService
 {
