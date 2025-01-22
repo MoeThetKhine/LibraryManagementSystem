@@ -16,11 +16,13 @@ public class TransactionRequestModel
 
 	public DateTime ReturnDate { get; set; }
 
-	public decimal Fine { get; set; }
+	//public decimal Fine { get; set; }
 
 	public int Qty { get; set; }
 
 	public decimal TotalAmount { get; set; }
+
+//	public int DaysLate { get; set; }
 }
 
 #endregion
