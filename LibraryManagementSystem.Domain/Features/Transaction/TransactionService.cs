@@ -63,6 +63,9 @@ public class TransactionService
 
 		try
 		{
+
+			#region Validation
+
 			var transaction = await _appDbContext.TblTransactions
 				.AsNoTracking()
 				.FirstOrDefaultAsync(x => x.BorrowDate == borrowDate);
@@ -71,6 +74,8 @@ public class TransactionService
 			{
 				result = Result<TransactionModel>.ValidationError("Transaction Not Found.");
 			}
+
+			#endregion
 
 			var model = new TransactionModel
 			{
@@ -82,7 +87,6 @@ public class TransactionService
 				Fine = transaction.Fine,
 				Qty = transaction.Qty,
 				TotalAmount = transaction.TotalAmount,
-				//DaysLate = transaction.DaysLate
 			};
 
 			result = Result<TransactionModel>.Success(model);
