@@ -17,6 +17,9 @@ public class TransactionService
 
 		try
 		{
+
+			#region Validation
+
 			var transactions = await _appDbContext.TblTransactions
 				.AsNoTracking()
 				.ToListAsync();
@@ -25,6 +28,8 @@ public class TransactionService
 			{
 				result = Result<IEnumerable<TransactionModel>>.ValidationError("No Transaction Found.");
 			}
+
+			#endregion
 
 			var lst = transactions.Select(transaction => new TransactionModel
 			{
@@ -36,7 +41,6 @@ public class TransactionService
 				Fine = transaction.Fine,
 				Qty = transaction.Qty,
 				TotalAmount = transaction.TotalAmount,
-				//DaysLate = transaction.DaysLate
 			}).ToList();
 
 			result = Result<IEnumerable<TransactionModel>>.Success(lst);
