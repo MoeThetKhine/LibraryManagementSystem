@@ -4,7 +4,7 @@
 
 public class ReturnModel
 {
-	public string ReturnId { get; set; } = null!;
+	//public string ReturnId { get; set; } = null!;
 
 	public string BorrowId { get; set; } = null!;
 
