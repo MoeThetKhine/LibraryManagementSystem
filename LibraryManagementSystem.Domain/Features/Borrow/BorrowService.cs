@@ -30,7 +30,6 @@ public class BorrowService
 				Qty = x.Qty,
 			}).ToList();
 
-
 			if (!lst.Any())
 			{
 				result = Result<IEnumerable<BorrowModel>>.ValidationError("No Return Found.");
