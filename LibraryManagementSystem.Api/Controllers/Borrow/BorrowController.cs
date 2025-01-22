@@ -24,11 +24,15 @@ namespace LibraryManagementSystem.Api.Controllers.Borrow
 
 		#endregion
 
+		#region Get Borrow List By Id Async
+
 		[HttpGet("{id}")]
 		public async Task<IActionResult> GetBorrowListByIdAsync(string id)
 		{
 			var result = await _borrowService.GetBorrowListByIdAsync(id);
 			return Ok(result);
 		}
+
+		#endregion
 	}
 }
