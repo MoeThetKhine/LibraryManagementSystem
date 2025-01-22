@@ -131,6 +131,8 @@ public partial class AppDbContext : DbContext
 
 		#endregion
 
+		#region TblUser
+
 		modelBuilder.Entity<TblUser>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PK__Tbl_User__1788CC4CB1537EFB");
@@ -149,7 +151,9 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.UserRole).HasMaxLength(50);
         });
 
-        OnModelCreatingPartial(modelBuilder);
+		#endregion
+
+		OnModelCreatingPartial(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
