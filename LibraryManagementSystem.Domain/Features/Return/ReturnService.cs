@@ -34,10 +34,15 @@ public class ReturnService
 				TotalAmount = x.TotalAmount
 			}).ToList();
 
+			#region Validation
+
 			if (!lst.Any())
 			{
 				result = Result<IEnumerable<ReturnModel>>.ValidationError("No Return Found.");
 			}
+
+			#endregion
+
 			result = Result<IEnumerable<ReturnModel>>.Success(lst);
 
 		}
