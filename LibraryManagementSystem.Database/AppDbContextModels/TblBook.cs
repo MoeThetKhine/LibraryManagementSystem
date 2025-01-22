@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Database.AppDbContextModels;
 
+#region TblBook
+
 public partial class TblBook
 {
     public string BookId { get; set; } = null!;
@@ -18,3 +20,5 @@ public partial class TblBook
 
     public bool IsActive { get; set; }
 }
+
+#endregion
