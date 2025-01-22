@@ -137,6 +137,9 @@ public class UserService
 
 		try
 		{
+
+			#region Validation
+
 			var user = await _appDbContext.TblUsers
 				.FirstOrDefaultAsync(u => u.Email == logoutModel.Email  && !u.IsLocked && u.IsActive);
 
@@ -144,6 +147,8 @@ public class UserService
 			{
 				return Result<LogoutModel>.ValidationError("User not found.");
 			}
+
+			#endregion
 
 			user.IsLocked = true;
 			await _appDbContext.SaveChangesAsync();
