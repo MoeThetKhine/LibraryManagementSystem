@@ -106,6 +106,8 @@ public class BookService
 
 		try
 		{
+			#region Validation
+
 			var bookExist = await _appDbContext.TblBooks
 				.AsNoTracking()
 				.AnyAsync(x => x.Isbn == bookModel.Isbn || x.CategoryName == bookModel.CategoryName);
@@ -119,6 +121,8 @@ public class BookService
 			{
 				result = Result<BookModel>.ValidationError("Please Fill Completely");
 			}
+
+			#endregion
 
 			var book = new TblBook
 			{
