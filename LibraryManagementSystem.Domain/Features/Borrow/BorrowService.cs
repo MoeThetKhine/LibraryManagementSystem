@@ -11,6 +11,8 @@ public class BorrowService
 		_appDbContext = appDbContext;
 	}
 
+	#region GetBorrowListAsync
+
 	public async Task<Result<IEnumerable<BorrowModel>>> GetBorrowListAsync()
 	{
 		Result<IEnumerable<BorrowModel>> result;
@@ -41,6 +43,8 @@ public class BorrowService
 		}
 		return result;
 	}
+
+	#endregion
 
 	public async Task<Result<IEnumerable<BorrowModel>>> GetBorrowListByIdAsync(string id)
 	{
