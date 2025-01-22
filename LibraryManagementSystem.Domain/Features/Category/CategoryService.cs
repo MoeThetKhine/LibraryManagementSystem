@@ -49,6 +49,8 @@ public class CategoryService
 
 		try
 		{
+			#region Validation
+
 			var categories = await appDbContext.TblCategories
 				.AsNoTracking()
 				.ToListAsync();
@@ -57,6 +59,8 @@ public class CategoryService
 			{
 				result = Result<IEnumerable<CategoryRequestModel>>.ValidationError("No Category Found.");
 			}
+
+			#endregion
 
 			var categoryModels = categories.Select(category => new CategoryRequestModel
 			{
