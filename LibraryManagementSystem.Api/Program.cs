@@ -16,6 +16,7 @@ builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<BookService>();
 builder.Services.AddScoped<TransactionService>();
 builder.Services.AddScoped<ReturnService>();
+builder.Services.AddScoped<BorrowService>();
 
 #endregion
 
