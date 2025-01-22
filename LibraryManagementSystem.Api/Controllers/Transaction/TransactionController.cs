@@ -1,4 +1,6 @@
-﻿namespace LibraryManagementSystem.Api.Controllers.Transaction;
+﻿using LibraryManagementSystem.Domain.Features.Transaction;
+
+namespace LibraryManagementSystem.Api.Controllers.Transaction;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -21,4 +23,12 @@ public class TransactionController : ControllerBase
 	}
 
 	#endregion
+
+	[HttpGet("{borrowDate}")]
+	public async Task<IActionResult> GetTransactionByIdAsync(DateTime borrowDate)
+	{
+		var result = await _transactionService.GetTransactionByIdAsync(borrowDate);
+		return Ok(result);
+	}
+
 }
