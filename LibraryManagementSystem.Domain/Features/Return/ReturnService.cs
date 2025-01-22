@@ -83,4 +83,58 @@ public class ReturnService
 
 	#endregion
 
+	public async Task<Result<ReturnModel>> CreateReturnAsync(ReturnModel returnModel)
+	{
+		Result<ReturnModel> result;
+
+		try
+		{
+			var borrow = await _appDbContext.TblBorrows
+				.AsNoTracking()
+				.FirstOrDefaultAsync(x => x.BorrowId == returnModel.BorrowId);
+
+			var book = await _appDbContext.TblBooks
+			.FirstOrDefaultAsync(x => x.BookId == borrow.BookId && x.IsActive);
+
+			if (borrow is null)
+			{
+				result = Result<ReturnModel>.ValidationError("Borrow Id Not Found.");
+			}
+
+			var dueDate = borrow!.DueDate;
+
+			decimal fineRatePerDay = 3000;
+
+			int daysLate = (returnModel.ReturnDate > dueDate) ? (returnModel.ReturnDate - dueDate).Days : 0;
+
+			decimal fine = daysLate > 0 ? daysLate * fineRatePerDay : 0;
+
+			decimal totalAmount = fine + (book.Price * borrow.Qty);
+
+			book.Qty += borrow.Qty;
+
+			var returnEntity = new TblReturn
+			{
+				ReturnId = Guid.NewGuid().ToString(),
+				BorrowId = returnModel.BorrowId,
+				ReturnDate = DateTime.UtcNow,
+				DaysLate = daysLate,
+				Fine = fine,
+				TotalAmount = totalAmount
+			};
+
+			_appDbContext.TblBooks.Update(book);
+
+			await _appDbContext.TblReturns.AddAsync(returnEntity);
+			await _appDbContext.SaveChangesAsync();
+
+			result = Result<ReturnModel>.Success(returnModel);
+		}
+		catch (Exception ex)
+		{
+			result = Result<ReturnModel>.ValidationError(ex.Message);
+		}
+		return result;
+	}
+
 }
