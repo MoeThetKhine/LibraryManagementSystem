@@ -1,77 +1,76 @@
 ﻿using LibraryManagementSystem.Domain.Models.Borrow;
 
-namespace LibraryManagementSystem.Domain.Features.Borrow
+namespace LibraryManagementSystem.Domain.Features.Borrow;
+
+public class BorrowService
 {
-	public class BorrowService
+	private readonly AppDbContext _appDbContext;
+
+	public BorrowService(AppDbContext appDbContext)
 	{
-		private readonly AppDbContext _appDbContext;
+		_appDbContext = appDbContext;
+	}
 
-		public BorrowService(AppDbContext appDbContext)
+	public async Task<Result<IEnumerable<BorrowModel>>> GetBorrowListAsync()
+	{
+		Result<IEnumerable<BorrowModel>> result;
+
+		try
 		{
-			_appDbContext = appDbContext;
-		}
+			var borrow = await _appDbContext.TblBorrows.AsNoTracking()
+				.ToListAsync();
 
-		public async Task<Result<IEnumerable<BorrowModel>>> GetBorrowListAsync()
-		{
-			Result<IEnumerable<BorrowModel>> result;
+			var lst = borrow.Select(x => new BorrowModel { 
+			UserId = x.UserId,
+			BookId = x.BookId,
+			BorrowDate = x.BorrowDate,
+			DueDate = x.DueDate,
+			Qty = x.Qty,
+			}).ToList();
 
-			try
+
+			if (!lst.Any())
 			{
-				var borrow = await _appDbContext.TblBorrows.AsNoTracking()
-					.ToListAsync();
+				result = Result<IEnumerable<BorrowModel>>.ValidationError("No Return Found.");
+			}
+			result = Result<IEnumerable<BorrowModel>>.Success(lst);
+		}
+		catch (Exception ex)
+		{
+			result = Result<IEnumerable<BorrowModel>>.ValidationError(ex.Message);
+		}
+		return result;
+	}
 
-				var lst = borrow.Select(x => new BorrowModel { 
+	public async Task<Result<IEnumerable<BorrowModel>>> GetBorrowListByIdAsync(string id)
+	{
+		Result<IEnumerable<BorrowModel>> result;
+
+		try
+		{
+			var borrow = await _appDbContext.TblBorrows.AsNoTracking()
+				.Where(x => x.BorrowId == id).ToListAsync();
+
+			var lst = borrow.Select(x => new BorrowModel
+			{
 				UserId = x.UserId,
 				BookId = x.BookId,
 				BorrowDate = x.BorrowDate,
 				DueDate = x.DueDate,
 				Qty = x.Qty,
-				}).ToList();
+			}).ToList();
 
-
-				if (!lst.Any())
-				{
-					result = Result<IEnumerable<BorrowModel>>.ValidationError("No Return Found.");
-				}
-				result = Result<IEnumerable<BorrowModel>>.Success(lst);
-			}
-			catch (Exception ex)
+			if (!lst.Any())
 			{
-				result = Result<IEnumerable<BorrowModel>>.ValidationError(ex.Message);
+				result = Result<IEnumerable<BorrowModel>>.ValidationError("No Return Found.");
 			}
-			return result;
+			result = Result<IEnumerable<BorrowModel>>.Success(lst);
 		}
-
-		public async Task<Result<IEnumerable<BorrowModel>>> GetBorrowListByIdAsync(string id)
+		catch (Exception ex)
 		{
-			Result<IEnumerable<BorrowModel>> result;
-
-			try
-			{
-				var borrow = await _appDbContext.TblBorrows.AsNoTracking()
-					.Where(x => x.BorrowId == id).ToListAsync();
-
-				var lst = borrow.Select(x => new BorrowModel
-				{
-					UserId = x.UserId,
-					BookId = x.BookId,
-					BorrowDate = x.BorrowDate,
-					DueDate = x.DueDate,
-					Qty = x.Qty,
-				}).ToList();
-
-				if (!lst.Any())
-				{
-					result = Result<IEnumerable<BorrowModel>>.ValidationError("No Return Found.");
-				}
-				result = Result<IEnumerable<BorrowModel>>.Success(lst);
-			}
-			catch (Exception ex)
-			{
-				result = Result<IEnumerable<BorrowModel>>.ValidationError(ex.Message);
-			}
-			return result;
+			result = Result<IEnumerable<BorrowModel>>.ValidationError(ex.Message);
 		}
-
+		return result;
 	}
+
 }
