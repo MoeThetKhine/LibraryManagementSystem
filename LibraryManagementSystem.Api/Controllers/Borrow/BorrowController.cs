@@ -1,6 +1,4 @@
 ﻿using LibraryManagementSystem.Domain.Features.Borrow;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementSystem.Api.Controllers.Borrow
 {
