@@ -109,7 +109,9 @@ public class TransactionService
 
 		try
 		{
-			
+
+			#region Validation
+
 			DateTime dueDate = model.DueDate; 
 			DateTime borrowDate = model.BorrowDate;
 
@@ -144,9 +146,10 @@ public class TransactionService
 			{
 				return Result<TransactionRequestModel>.ValidationError("Insufficient stock available.");
 			}
-
-
+			
 			decimal totalAmount = fine + (book.Price * model.Qty);
+
+			#endregion
 
 			var transaction = new TblTransaction
 			{
