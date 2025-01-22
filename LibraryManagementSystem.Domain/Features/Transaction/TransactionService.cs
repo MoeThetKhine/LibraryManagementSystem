@@ -1,4 +1,6 @@
-﻿namespace LibraryManagementSystem.Domain.Features.Transaction;
+﻿using Microsoft.VisualBasic;
+
+namespace LibraryManagementSystem.Domain.Features.Transaction;
 
 public class TransactionService
 {
@@ -35,7 +37,8 @@ public class TransactionService
 				ReturnDate = transaction.ReturnDate,
 				Fine = transaction.Fine,
 				Qty = transaction.Qty,
-				TotalAmount = transaction.TotalAmount
+				TotalAmount = transaction.TotalAmount,
+				DaysLate = transaction.DaysLate
 			}).ToList();
 
 			result = Result<IEnumerable<TransactionModel>>.Success(lst);
@@ -76,7 +79,8 @@ public class TransactionService
 				ReturnDate = transaction.ReturnDate,
 				Fine = transaction.Fine,
 				Qty = transaction.Qty,
-				TotalAmount = transaction.TotalAmount
+				TotalAmount = transaction.TotalAmount,
+				DaysLate = transaction.DaysLate
 			};
 
 			result = Result<TransactionModel>.Success(model);
@@ -97,6 +101,46 @@ public class TransactionService
 
 		try
 		{
+			DateTime dueDate = model.DueDate; // Ensure this is a valid property in your model
+			DateTime borrowDate = model.BorrowDate;
+
+
+			var isBookAvailable = await _appDbContext.TblBooks
+				.AsNoTracking()
+				.AnyAsync(x => x.BookId == model.BookId && x.IsActive);
+
+			var isUserAvailable = await _appDbContext.TblUsers
+				.AsNoTracking()
+				.AnyAsync(x => x.UserName == model.UserName && x.IsActive);
+
+			var book = await _appDbContext.TblBooks
+			.FirstOrDefaultAsync(x => x.BookId == model.BookId && x.IsActive);
+
+			if (!isUserAvailable)
+			{
+				result = Result<TransactionRequestModel>.ValidationError("User Not Found.");
+			}
+
+			if(dueDate < borrowDate)
+			{
+				result = Result<TransactionRequestModel>.ValidationError("Due Date should be greater than Borrow Date.");
+			}
+
+			decimal fineRatePerDay = 1.0m;
+
+			int daysLate = (model.ReturnDate > model.DueDate) ? (model.ReturnDate - model.DueDate).Days : 0;
+
+			decimal fine = daysLate > 0 ? daysLate * fineRatePerDay : 0;
+
+			if (book.Qty < model.Qty)
+			{
+				return Result<TransactionRequestModel>.ValidationError("Insufficient stock available.");
+			}
+
+			//book.Qty -= model.Qty;
+
+			decimal totalAmount = fine + (book.Price * model.Qty);
+
 			var transaction = new TblTransaction
 			{
 				TransactionId = Guid.NewGuid().ToString(),
@@ -105,11 +149,13 @@ public class TransactionService
 				BorrowDate = model.BorrowDate,
 				DueDate = model.DueDate,
 				ReturnDate = model.ReturnDate,
-				Fine = model.Fine,
+				Fine = fine,
 				Qty = model.Qty,
-				TotalAmount = model.TotalAmount
+				TotalAmount = totalAmount,
+				DaysLate = daysLate
 			};
 
+			//_appDbContext.TblBooks.Update(book);
 			await _appDbContext.TblTransactions.AddAsync(transaction);
 			await _appDbContext.SaveChangesAsync();
 
