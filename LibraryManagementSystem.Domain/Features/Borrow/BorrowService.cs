@@ -34,10 +34,15 @@ public class BorrowService
 				Qty = x.Qty,
 			}).ToList();
 
+			#region Validation
+
 			if (!lst.Any())
 			{
 				result = Result<IEnumerable<BorrowModel>>.ValidationError("No Return Found.");
 			}
+
+			#endregion
+
 			result = Result<IEnumerable<BorrowModel>>.Success(lst);
 		}
 		catch (Exception ex)
