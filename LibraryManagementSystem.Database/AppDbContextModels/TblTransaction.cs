@@ -21,6 +21,8 @@ public partial class TblTransaction
 	public int Qty { get; set; }
 
 	public decimal TotalAmount { get; set; }
+
+	public int DaysLate { get; set; }
 }
 
 #endregion
