@@ -1,6 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Transaction;
-
-namespace LibraryManagementSystem.Api.Controllers.Transaction;
+﻿namespace LibraryManagementSystem.Api.Controllers.Transaction;
 
 [Route("api/[controller]")]
 [ApiController]
