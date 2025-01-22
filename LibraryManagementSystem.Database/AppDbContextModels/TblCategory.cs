@@ -1,14 +1,13 @@
-﻿namespace LibraryManagementSystem.Database.AppDbContextModels;
+﻿using System;
+using System.Collections.Generic;
 
-#region TblCategory
+namespace LibraryManagementSystem.Database.AppDbContextModels;
 
 public partial class TblCategory
 {
-	public string CategoryId { get; set; } = null!;
+    public string CategoryId { get; set; } = null!;
 
-	public string CategoryName { get; set; } = null!;
+    public string CategoryName { get; set; } = null!;
 
-	public string? Description { get; set; }
+    public string? Description { get; set; }
 }
-
-#endregion
