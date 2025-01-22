@@ -88,6 +88,28 @@ public class BorrowService
 		try
 		{
 			DateTime borrowDate = borrowModel.BorrowDate;
+			DateTime dueDate = borrowModel.DueDate;
+
+			var isBookAvailable = await _appDbContext.TblBooks
+				.AsNoTracking()
+				.AnyAsync(x => x.BookId == borrowModel.BookId && x.IsActive);
+
+			var isUserAvailable = await _appDbContext.TblUsers
+				.AsNoTracking()
+				.AnyAsync(x => x.UserId == borrowModel.UserId && x.IsActive);
+
+			var book = await _appDbContext.TblBooks
+			.FirstOrDefaultAsync(x => x.BookId == borrowModel.BookId && x.IsActive);
+
+			if (!isUserAvailable)
+			{
+				result = Result<BorrowModel>.ValidationError("User Not Found.");
+			}
+
+			if (dueDate < borrowDate)
+			{
+				result = Result<BorrowModel>.ValidationError("Due Date should be greater than Borrow Date.");
+			}
 
 			var borrow = new TblBorrow
 			{
