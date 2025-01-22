@@ -10,6 +10,3 @@ global using LibraryManagementSystem.Domain.Models.Book;
 global using LibraryManagementSystem.Domain.Features.Transaction;
 global using LibraryManagementSystem.Domain.Models.Transaction;
 global using LibraryManagementSystem.Domain.Features.Return;
-
-
-
