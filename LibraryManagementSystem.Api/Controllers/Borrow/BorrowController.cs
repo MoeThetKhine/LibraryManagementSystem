@@ -22,6 +22,11 @@ namespace LibraryManagementSystem.Api.Controllers.Borrow
 			return Ok(result);
 		}
 
-
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetBorrowListByIdAsync(string id)
+		{
+			var result = await _borrowService.GetBorrowListByIdAsync(id);
+			return Ok(result);
+		}
 	}
 }
