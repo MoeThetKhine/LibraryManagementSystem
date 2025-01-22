@@ -91,4 +91,35 @@ public class TransactionService
 
 	#endregion
 
+	public async Task<Result<TransactionRequestModel>> AddTransactionAsync(TransactionRequestModel model)
+	{
+		Result<TransactionRequestModel> result;
+
+		try
+		{
+			var transaction = new TblTransaction
+			{
+				TransactionId = Guid.NewGuid().ToString(),
+				UserName = model.UserName,
+				BookId = model.BookId,
+				BorrowDate = model.BorrowDate,
+				DueDate = model.DueDate,
+				ReturnDate = model.ReturnDate,
+				Fine = model.Fine,
+				Qty = model.Qty,
+				TotalAmount = model.TotalAmount
+			};
+
+			await _appDbContext.TblTransactions.AddAsync(transaction);
+			await _appDbContext.SaveChangesAsync();
+
+			result = Result<TransactionRequestModel>.Success(model);
+		}
+		catch (Exception ex)
+		{
+			result = Result<TransactionRequestModel>.ValidationError(ex.Message);
+		}
+
+		return result;
+	}
 }
