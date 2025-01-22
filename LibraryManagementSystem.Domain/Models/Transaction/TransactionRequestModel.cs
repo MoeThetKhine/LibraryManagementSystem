@@ -20,7 +20,7 @@ public class TransactionRequestModel
 
 	public int Qty { get; set; }
 
-	public decimal TotalAmount { get; set; }
+	//public decimal TotalAmount { get; set; }
 
 //	public int DaysLate { get; set; }
 }
