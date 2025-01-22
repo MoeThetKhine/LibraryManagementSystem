@@ -48,6 +48,8 @@ public class UserService
 
 		try
 		{
+			#region Validation
+
 			var existingUser = await _appDbContext.TblUsers
 				.FirstOrDefaultAsync(u => u.Email == userRequest.Email);
 
@@ -55,6 +57,8 @@ public class UserService
 			{
 				return Result<UserRequestModel>.ValidationError("A user with this email already exists.");
 			}
+
+			#endregion
 
 			var user = new TblUser
 			{
