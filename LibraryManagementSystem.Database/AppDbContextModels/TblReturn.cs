@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Database.AppDbContextModels;
 
+#region TblReturn
+
 public partial class TblReturn
 {
     public string ReturnId { get; set; } = null!;
@@ -14,3 +16,5 @@ public partial class TblReturn
 
     public decimal TotalAmount { get; set; }
 }
+
+#endregion
