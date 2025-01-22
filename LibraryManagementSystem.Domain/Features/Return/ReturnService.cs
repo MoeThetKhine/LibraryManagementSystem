@@ -63,8 +63,12 @@ public class ReturnService
 
 		try
 		{
+			#region Validation
+
 			var returns = await _appDbContext.TblReturns.AsNoTracking()
 				.Where(x=> x.ReturnId == id).ToListAsync();
+
+			#endregion
 
 			var lst = returns.Select (x => new ReturnModel
 			{
@@ -75,11 +79,15 @@ public class ReturnService
 				TotalAmount = x.TotalAmount
 			}).ToList();
 
+			#region Validation
 
 			if (!lst.Any())
 			{
 				result = Result<IEnumerable<ReturnModel>>.ValidationError("No Return Found.");
 			}
+
+			#endregion
+
 			result = Result<IEnumerable<ReturnModel>>.Success(lst);
 
 		}
