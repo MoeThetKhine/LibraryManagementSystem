@@ -17,9 +17,13 @@ public class ReturnService
 
 		try
 		{
+			#region Validation
+
 			var returns = await _appDbContext.TblReturns
 				.AsNoTracking()
 				.ToListAsync();
+
+			#endregion
 
 			var lst = returns.Select(x => new ReturnModel
 			{
