@@ -137,7 +137,6 @@ public class TransactionService
 				return Result<TransactionRequestModel>.ValidationError("Insufficient stock available.");
 			}
 
-			//book.Qty -= model.Qty;
 
 			decimal totalAmount = fine + (book.Price * model.Qty);
 
@@ -155,7 +154,6 @@ public class TransactionService
 				DaysLate = daysLate
 			};
 
-			//_appDbContext.TblBooks.Update(book);
 			await _appDbContext.TblTransactions.AddAsync(transaction);
 			await _appDbContext.SaveChangesAsync();
 
