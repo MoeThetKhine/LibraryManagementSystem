@@ -95,6 +95,9 @@ public class UserService
 
 		try
 		{
+
+			#region Validation
+
 			var members = await _appDbContext.TblUsers
 				.Where(u => u.UserRole == "Member" && u.IsActive)
 				.ToListAsync();
@@ -103,6 +106,8 @@ public class UserService
 			{
 				return Result<IEnumerable<UserModel>>.ValidationError("No members found.");
 			}
+
+			#endregion
 
 			var lst = members.Select(x => new UserModel
 			{
