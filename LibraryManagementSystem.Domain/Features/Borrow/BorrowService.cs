@@ -81,6 +81,8 @@ public class BorrowService
 
 	#endregion
 
+	#region CreateBorrowAsync
+
 	public async Task<Result<BorrowModel>> CreateBorrowAsync(BorrowModel borrowModel)
 	{
 		Result<BorrowModel> result;
@@ -133,7 +135,6 @@ public class BorrowService
 		return result;
 	}
 
-
-
+	#endregion
 
 }
