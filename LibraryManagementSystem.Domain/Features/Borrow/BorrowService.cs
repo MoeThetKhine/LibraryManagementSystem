@@ -20,12 +20,14 @@ public class BorrowService
 			var borrow = await _appDbContext.TblBorrows.AsNoTracking()
 				.ToListAsync();
 
-			var lst = borrow.Select(x => new BorrowModel { 
-			UserId = x.UserId,
-			BookId = x.BookId,
-			BorrowDate = x.BorrowDate,
-			DueDate = x.DueDate,
-			Qty = x.Qty,
+			var lst = borrow.Select(x => new BorrowModel
+			{ 
+				BorrowId = x.BorrowId,
+				UserId = x.UserId,
+				BookId = x.BookId,
+				BorrowDate = x.BorrowDate,
+				DueDate = x.DueDate,
+				Qty = x.Qty,
 			}).ToList();
 
 
@@ -57,6 +59,7 @@ public class BorrowService
 
 			var lst = borrow.Select(x => new BorrowModel
 			{
+				BorrowId = x.BorrowId,
 				UserId = x.UserId,
 				BookId = x.BookId,
 				BorrowDate = x.BorrowDate,
