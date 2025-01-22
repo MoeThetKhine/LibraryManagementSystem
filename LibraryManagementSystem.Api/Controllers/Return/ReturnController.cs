@@ -22,4 +22,11 @@ public class ReturnController : ControllerBase
 
 	#endregion
 
+	[HttpGet("{id}")]
+	public async Task<IActionResult> GetReturnListByIdAsync(string id)
+	{
+		var result = await _returnService.GetReturnListByIdAsync(id);
+		return Ok(result);
+	}
+
 }
