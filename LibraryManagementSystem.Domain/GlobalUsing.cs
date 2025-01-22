@@ -7,5 +7,3 @@ global using LibraryManagementSystem.Domain.Models.Book;
 global using LibraryManagementSystem.Domain.Models.Transaction;
 global using LibraryManagementSystem.Domain.Models.Return;
 global using LibraryManagementSystem.Domain.Models.Borrow;
-
-
