@@ -21,7 +21,7 @@ public class BorrowService
 				.ToListAsync();
 
 			var lst = borrow.Select(x => new BorrowModel
-			{ 
+			{
 				BorrowId = x.BorrowId,
 				UserId = x.UserId,
 				BookId = x.BookId,
@@ -80,5 +80,38 @@ public class BorrowService
 	}
 
 	#endregion
+
+	public async Task<Result<BorrowModel>> CreateBorrowAsync(BorrowModel borrowModel)
+	{
+		Result<BorrowModel> result;
+
+		try
+		{
+			DateTime borrowDate = borrowModel.BorrowDate;
+
+			var borrow = new TblBorrow
+			{
+				BookId = Guid.NewGuid().ToString(),
+				UserId = borrowModel.UserId,
+				BorrowId = borrowModel.BorrowId,
+				BorrowDate = borrowModel.BorrowDate,
+				DueDate = borrowModel.DueDate,
+				Qty = borrowModel.Qty
+			};
+
+			await _appDbContext.TblBorrows.AddAsync(borrow);
+			await _appDbContext.SaveChangesAsync();
+
+			result = Result<BorrowModel>.Success(borrowModel);
+		}
+		catch (Exception ex)
+		{
+			result = Result<BorrowModel>.ValidationError(ex.Message);
+		}
+		return result;
+	}
+
+
+
 
 }
