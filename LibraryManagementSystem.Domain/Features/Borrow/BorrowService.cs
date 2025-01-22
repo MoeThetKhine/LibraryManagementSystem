@@ -46,6 +46,8 @@ public class BorrowService
 
 	#endregion
 
+	#region GetBorrowListByIdAsync
+
 	public async Task<Result<IEnumerable<BorrowModel>>> GetBorrowListByIdAsync(string id)
 	{
 		Result<IEnumerable<BorrowModel>> result;
@@ -76,5 +78,7 @@ public class BorrowService
 		}
 		return result;
 	}
+
+	#endregion
 
 }
