@@ -107,11 +107,11 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.TotalAmount).HasColumnType("decimal(10, 2)");
         });
 
-        #endregion
+		#endregion
 
+		#region TblTransaction
 
-
-        modelBuilder.Entity<TblTransaction>(entity =>
+		modelBuilder.Entity<TblTransaction>(entity =>
         {
             entity.HasKey(e => e.TransactionId).HasName("PK__Tbl_Tran__55433A6BBC26F307");
 
@@ -129,7 +129,9 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.UserName).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<TblUser>(entity =>
+		#endregion
+
+		modelBuilder.Entity<TblUser>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PK__Tbl_User__1788CC4CB1537EFB");
 
