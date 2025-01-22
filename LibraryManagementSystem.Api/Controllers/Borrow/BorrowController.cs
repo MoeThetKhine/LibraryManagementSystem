@@ -1,4 +1,6 @@
-﻿namespace LibraryManagementSystem.Api.Controllers.Borrow;
+﻿using LibraryManagementSystem.Domain.Models.Borrow;
+
+namespace LibraryManagementSystem.Api.Controllers.Borrow;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -32,5 +34,12 @@ public class BorrowController : ControllerBase
 	}
 
 	#endregion
+
+	[HttpPost]
+	public async Task<IActionResult> CreateBorrowAsync([FromBody] BorrowModel borrowModel)
+	{
+		var result = await _borrowService.CreateBorrowAsync(borrowModel);
+		return Ok(result);
+	}
 
 }
