@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Domain.Models.Return;
 
+#region ReturnModel
+
 public class ReturnModel
 {
 	public string ReturnId { get; set; } = null!;
@@ -14,3 +16,5 @@ public class ReturnModel
 
 	public decimal TotalAmount { get; set; }
 }
+
+#endregion
