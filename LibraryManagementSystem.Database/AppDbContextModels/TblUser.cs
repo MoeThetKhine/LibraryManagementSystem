@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Database.AppDbContextModels;
 
+#region TblUser
+
 public partial class TblUser
 {
     public string UserId { get; set; } = null!;
@@ -20,3 +22,5 @@ public partial class TblUser
 
     public bool IsLocked { get; set; }
 }
+
+#endregion
