@@ -4,8 +4,6 @@
 
 public class TransactionRequestModel
 {
-	//public string TransactionId { get; set; } = null!;
-
 	public string UserName { get; set; } = null!;
 
 	public string BookId { get; set; } = null!;
@@ -16,13 +14,8 @@ public class TransactionRequestModel
 
 	public DateTime ReturnDate { get; set; }
 
-	//public decimal Fine { get; set; }
-
 	public int Qty { get; set; }
 
-	//public decimal TotalAmount { get; set; }
-
-//	public int DaysLate { get; set; }
 }
 
 #endregion
