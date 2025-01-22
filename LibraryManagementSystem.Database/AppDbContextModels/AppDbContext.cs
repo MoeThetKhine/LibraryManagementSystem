@@ -37,7 +37,10 @@ public partial class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<TblBook>(entity =>
+
+		#region TblBook
+
+		modelBuilder.Entity<TblBook>(entity =>
         {
             entity.HasKey(e => e.BookId).HasName("PK__Tbl_Book__3DE0C207F94EE4EA");
 
@@ -54,7 +57,9 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Title).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<TblBorrow>(entity =>
+		#endregion
+
+		modelBuilder.Entity<TblBorrow>(entity =>
         {
             entity.HasKey(e => e.BorrowId).HasName("PK__TblBorro__4295F83FAB183494");
 
