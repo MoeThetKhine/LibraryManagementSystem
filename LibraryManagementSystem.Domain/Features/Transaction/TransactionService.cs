@@ -101,9 +101,9 @@ public class TransactionService
 
 		try
 		{
-			DateTime dueDate = model.DueDate; // Ensure this is a valid property in your model
+			
+			DateTime dueDate = model.DueDate; 
 			DateTime borrowDate = model.BorrowDate;
-
 
 			var isBookAvailable = await _appDbContext.TblBooks
 				.AsNoTracking()
