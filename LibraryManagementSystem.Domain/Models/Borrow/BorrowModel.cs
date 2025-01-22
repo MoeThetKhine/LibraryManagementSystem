@@ -1,5 +1,7 @@
 ﻿namespace LibraryManagementSystem.Domain.Models.Borrow;
 
+#region BorrowModel
+
 public class BorrowModel
 {
 	public string BorrowId { get; set; } = null!;
@@ -14,3 +16,5 @@ public class BorrowModel
 
 	public int Qty { get; set; }
 }
+
+#endregion
