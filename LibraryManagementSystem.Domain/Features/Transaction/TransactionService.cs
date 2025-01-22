@@ -48,4 +48,41 @@ public class TransactionService
 	}
 
 	#endregion
+
+	public async Task<Result<TransactionModel>> GetTransactionByIdAsync(DateTime borrowDate)
+	{
+		Result<TransactionModel> result;
+
+		try
+		{
+			var transaction = await _appDbContext.TblTransactions
+				.AsNoTracking()
+				.FirstOrDefaultAsync(x => x.BorrowDate == borrowDate);
+
+			if (transaction is null)
+			{
+				result = Result<TransactionModel>.ValidationError("Transaction Not Found.");
+			}
+
+			var model = new TransactionModel
+			{
+				UserName = transaction.UserName,
+				BookId = transaction.BookId,
+				BorrowDate = transaction.BorrowDate,
+				DueDate = transaction.DueDate,
+				ReturnDate = transaction.ReturnDate,
+				Fine = transaction.Fine,
+				Qty = transaction.Qty,
+				TotalAmount = transaction.TotalAmount
+			};
+
+			result = Result<TransactionModel>.Success(model);
+		}
+		catch (Exception ex)
+		{
+			result = Result<TransactionModel>.ValidationError(ex.Message);
+		}
+
+		return result;
+	}
 }
