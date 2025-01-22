@@ -13,11 +13,16 @@ namespace LibraryManagementSystem.Api.Controllers.Return
 			_returnService = returnService;
 		}
 
+		#region Get Return List Async
+
 		[HttpGet]
 		public async Task<IActionResult> GetReturnListAsync()
 		{
 			var result = await _returnService.GetReturnListAsync();
 			return Ok(result);
-		}			
+		}
+
+		#endregion
+
 	}
 }
