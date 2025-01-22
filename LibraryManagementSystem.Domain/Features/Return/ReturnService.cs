@@ -16,6 +16,8 @@ public class ReturnService
 		_appDbContext = appDbContext;
 	}
 
+	#region Get Return List Async
+
 	public async Task<Result<IEnumerable<ReturnModel>>> GetReturnListAsync()
 	{
 		Result<IEnumerable<ReturnModel>> result;
@@ -48,4 +50,7 @@ public class ReturnService
 		}
 		return result;
 	}
+
+	#endregion
+
 }
