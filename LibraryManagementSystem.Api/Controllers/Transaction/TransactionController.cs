@@ -1,4 +1,6 @@
-﻿namespace LibraryManagementSystem.Api.Controllers.Transaction;
+﻿using LibraryManagementSystem.Domain.Models.Transaction;
+
+namespace LibraryManagementSystem.Api.Controllers.Transaction;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -32,5 +34,13 @@ public class TransactionController : ControllerBase
 	}
 
 	#endregion
+
+	[HttpPost]
+	public async Task<IActionResult> AddTransactionAsync(TransactionRequestModel transactionRequestModel)
+	{
+		var result = await _transactionService.AddTransactionAsync(transactionRequestModel);
+		return Ok(result);
+	}
+
 
 }
