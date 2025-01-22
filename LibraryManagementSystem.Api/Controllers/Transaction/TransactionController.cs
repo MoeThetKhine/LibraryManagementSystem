@@ -22,6 +22,7 @@ public class TransactionController : ControllerBase
 
 	#endregion
 
+	#region Get Transaction By Date Async
 
 	[HttpGet("{borrowDate}")]
 	public async Task<IActionResult> GetTransactionByDateAsync(DateTime borrowDate)
@@ -29,5 +30,7 @@ public class TransactionController : ControllerBase
 		var result = await _transactionService.GetTransactionByDateAsync(borrowDate);
 		return Ok(result);
 	}
+
+	#endregion
 
 }
