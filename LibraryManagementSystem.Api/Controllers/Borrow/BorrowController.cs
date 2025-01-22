@@ -1,6 +1,4 @@
-﻿using LibraryManagementSystem.Domain.Models.Borrow;
-
-namespace LibraryManagementSystem.Api.Controllers.Borrow;
+﻿namespace LibraryManagementSystem.Api.Controllers.Borrow;
 
 [Route("api/[controller]")]
 [ApiController]
