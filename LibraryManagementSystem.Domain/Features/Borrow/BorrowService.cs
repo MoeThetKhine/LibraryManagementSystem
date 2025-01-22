@@ -17,8 +17,12 @@ public class BorrowService
 
 		try
 		{
+			#region Validation
+
 			var borrow = await _appDbContext.TblBorrows.AsNoTracking()
 				.ToListAsync();
+
+			#endregion
 
 			var lst = borrow.Select(x => new BorrowModel
 			{
