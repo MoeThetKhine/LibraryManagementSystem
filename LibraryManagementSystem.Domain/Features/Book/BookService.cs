@@ -158,6 +158,9 @@ public class BookService
 
 		try
 		{
+
+			#region Validation
+
 			var book = await _appDbContext.TblBooks
 				.FirstOrDefaultAsync(x => x.Isbn == isbn && x.IsActive);
 
@@ -165,6 +168,8 @@ public class BookService
 			{
 				return Result<BookReponseModel>.ValidationError("Book not found.");
 			}
+
+			#endregion
 
 			book.Qty = responseModel.Qty;
 			book.Price = responseModel.Price;
