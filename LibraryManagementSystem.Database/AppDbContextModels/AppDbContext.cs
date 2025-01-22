@@ -92,6 +92,8 @@ public partial class AppDbContext : DbContext
 
 		#endregion
 
+		#region TblReturn
+
 		modelBuilder.Entity<TblReturn>(entity =>
         {
             entity.HasKey(e => e.ReturnId).HasName("PK__TblRetur__F445E9A8FA95C61E");
@@ -104,6 +106,10 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.ReturnDate).HasColumnType("datetime");
             entity.Property(e => e.TotalAmount).HasColumnType("decimal(10, 2)");
         });
+
+        #endregion
+
+
 
         modelBuilder.Entity<TblTransaction>(entity =>
         {
